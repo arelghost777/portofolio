@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
-import { IconBrandNextjs, IconBrandReact, IconBrandTailwind, IconGitBranch, IconCloudUpload } from "@tabler/icons-react";
+import { IconBrandNextjs, IconBrandTailwind, IconGitBranch, IconCloudUpload } from "@tabler/icons-react";
 
 export default function FrontendSkills() {
   const titleWords = [
@@ -61,7 +61,7 @@ export default function FrontendSkills() {
         <div className="mb-16 text-center">
           <TypewriterEffect words={titleWords} className="justify-center" />
           <p className="mt-4 text-neutral-400 max-w-lg mx-auto">
-            Technologies que j'utilise quotidiennement pour créer des expériences web exceptionnelles
+            Technologies que j&apos;utilise quotidiennement pour créer des expériences web exceptionnelles
           </p>
         </div>
 

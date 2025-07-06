@@ -1,42 +1,35 @@
 "use client"; // Nécessaire pour les animations côté client
-import { useRef, useState } from "react";
-import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { AuroraBackground } from "@/components/ui/aurora-background";
-import { WavyBackground } from "@/components/ui/wavy-background";
 import { FloatingNav } from "@/components/ui/floating-navbar";
-import { IconHome, IconUser, IconBriefcase, IconMail, IconCode } from "@tabler/icons-react";
+import { IconHome, IconBriefcase, IconMail, IconCode } from "@tabler/icons-react";
 import { BackgroundBeams } from "./ui/background-beams";
-import { ButtonsCard } from "./ui/tailwindcss-buttons";
 
 export default function AttractiveHeader() {
-  const [activeSection, setActiveSection] = useState("accueil");
-  const ref = useRef(null);
 
 
   const {scrollYProgress} = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.05], [1, 0.5]);
-  const scale = useTransform(scrollYProgress, [0, 0.05], [1, 1.2]);
 
   const navItems = [
     {
-      name: "Accueil",
-      link: "/",
+      name: "À propos",
+      link: "#about",
       icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
-      name: "Projets",
-      link: "/projets",
-      icon: <IconBriefcase className="h-4 w-4 text-neutral-500 dark:text-white" />,
-    },
-    {
       name: "Compétences",
-      link: "/competences",
+      link: "#competences",
       icon: <IconCode className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
+      name: "Projets",
+      link: "#projets",
+      icon: <IconBriefcase className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
       name: "Contact",
-      link: "/contact",
+      link: "#contact",
       icon: <IconMail className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
   ];

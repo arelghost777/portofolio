@@ -1,8 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import { SparklesCore } from "@/components/ui/sparkles";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import Image from "next/image";
 
@@ -13,8 +11,6 @@ export default function PersonalAbout() {
     { text: "suis", className: "text-neutral-300" },
     { text: "Arel", className: "text-blue-500 font-bold" },
   ];
-
-  const passionText = "Développeur web passionné par la création d'expériences digitales mémorables. Mon credo ? Allier performance technique et élégance visuelle pour des produits qui captivent.";
 
   return (
     <section id="about" className="relative min-h-screen py-20 overflow-hidden">
@@ -74,12 +70,15 @@ export default function PersonalAbout() {
             transition={{ delay: 0.4 }}
             className="relative pl-8 border-l-2 border-blue-500/30"
           >
-            <div className="absolute text-7xl font-serif top-0 left-0 text-blue-500/20 -mt-4">"</div>
+            <div className="absolute text-7xl font-serif top-0 left-0 text-blue-500/20 -mt-4">&quot;</div>
             <p className="text-lg italic text-neutral-400">
-                Développeur web passionné par la création d’interfaces modernes et dynamiques.
-                J’aime particulièrement travailler avec des outils comme React, Next.js et Tailwind CSS, qui me permettent de construire des applications performantes et élégantes.
-                Curieux de nature, je ne cesse jamais d’apprendre. J’aime explorer de nouvelles technologies, relever des défis techniques et progresser à chaque projet.
-                Aujourd’hui, je cherche à m’investir dans des projets concrets, collaborer avec d’autres passionnés, et continuer à évoluer dans un environnement stimulant.
+                 Développeur web passionné par la création d&apos;interfaces modernes et dynamiques.
+                J&apos;aime particulièrement travailler avec des outils comme React, Next.js et Tailwind CSS,
+                qui me permettent de construire des applications performantes et élégantes.
+                Curieux de nature, je ne cesse jamais d&apos;apprendre. J&apos;aime explorer de nouvelles technologies,
+                relever des défis techniques et progresser à chaque projet.
+                Aujourd&apos;hui, je cherche à m&apos;investir dans des projets concrets, collaborer avec d&apos;autres passionnés,
+                et continuer à évoluer dans un environnement stimulant.
             </p>
           </motion.div>
         </div>

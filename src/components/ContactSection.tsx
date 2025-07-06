@@ -1,13 +1,20 @@
 "use client";
 import { motion } from "framer-motion";
 import { FiMail, FiLinkedin, FiGithub, FiSend } from "react-icons/fi";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+type FormData = {
+  name: string;
+  email: string;
+  message: string;
+};
+
 
 export default function ContactSection() {
-  const { register, handleSubmit, reset } = useForm();
+const { register, handleSubmit, reset } = useForm<FormData>();
 
-  const onSubmit = (data: any) => {
-    console.log(data); // Remplacer par votre logique d'envoi
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    console.log(data);
     alert(`Merci pour votre message, ${data.name} !`);
     reset();
   };

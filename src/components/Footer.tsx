@@ -25,7 +25,7 @@ export default function SiteFooter() {
               Arel <span className="text-blue-500">Tohoubi</span>
             </h3>
             <p className="mb-4">
-              Développeur web passionné par la création d'expériences digitales exceptionnelles.
+              Développeur web passionné par la création d&apos;expériences digitales exceptionnelles.
             </p>
             <p>© {currentYear} — Tous droits réservés</p>
           </motion.div>
@@ -46,7 +46,7 @@ export default function SiteFooter() {
               </li>
               <li>
                 <a href="/terms" className="hover:text-white transition-colors">
-                  Conditions d'utilisation
+                  Conditions d&apos;utilisation
                 </a>
               </li>
               <li>
