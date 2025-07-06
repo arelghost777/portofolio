@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 "use client";
 import React, { JSX, useState } from "react";
 import {
@@ -31,8 +33,7 @@ export const FloatingNav = ({
 
       if (scrollYProgress.get() < 0.05) {
         setVisible(true);
-      } 
-       else {
+      } else {
         if (direction < 0) {
           setVisible(true);
         } else {
