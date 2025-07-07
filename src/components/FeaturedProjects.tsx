@@ -20,9 +20,9 @@ type Project = {
 const projects: Project[] = [
   {
     title: "Plateforme E-commerce",
-    description: "Site avec paiement Stripe et dashboard admin",
-    tech: ["Next.js", "Stripe", "Tailwind"],
-    image: "/img1.jpg",
+    description: "Site de vente de console",
+    tech: ["Next.js", "Framer-motion", "Tailwind"],
+    image: "/ecom.png",
     preview: "https://ps5ecom.vercel.app/",
     links: [
       { icon: <FiGithub />, url: "https://github.com/votreprofil/ecommerce" },
