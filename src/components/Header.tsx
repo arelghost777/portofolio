@@ -58,12 +58,10 @@ export default function AttractiveHeader() {
             <p className="mt-4 text-neutral-300 max-w-lg mx-auto">
                Je conçois des interfaces modernes, performantes, responsives et animées avec passion.
             </p>
-            <button className="px-8 py-2 border border-black bg-transparent text-black  dark:border-white relative group transition duration-200">
-            <div className="absolute -bottom-2 -right-2 bg-yellow-300 h-full w-full -z-10 group-hover:bottom-0 group-hover:right-0 transition-all duration-200" />
-            <span className="relative">
-                Contactez moi
-            </span>
-            </button>
+        <button className="px-4 py-2 backdrop-blur-sm border bg-emerald-300/10 border-green-500/20 text-white mx-auto text-center rounded-full relative mt-4">
+          <span>Contactez moi →</span>
+          <div className="absolute inset-x-0  h-px -bottom-px bg-gradient-to-r w-3/4 mx-auto from-transparent via-green-500 to-transparent" />
+        </button>
           </motion.div>
         </div>
       </AuroraBackground>

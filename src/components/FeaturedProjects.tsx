@@ -1,28 +1,43 @@
 "use client";
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink, FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
+import { LinkPreview } from "./ui/link-preview";
 
-const projects = [
+type Project = {
+  title: string;
+  description: string;
+  tech: string[];
+  image: string;
+  preview: string;
+  links: {
+    icon: React.ReactNode;
+    url: string;
+  }[];
+};
+
+const projects: Project[] = [
   {
     title: "Plateforme E-commerce",
     description: "Site avec paiement Stripe et dashboard admin",
     tech: ["Next.js", "Stripe", "Tailwind"],
     image: "/img1.jpg",
+    preview: "https://ps5ecom.vercel.app/",
     links: [
-      { icon: <FiGithub />, url: "#" },
-      { icon: <FiExternalLink />, url: "#" }
+      { icon: <FiGithub />, url: "https://github.com/votreprofil/ecommerce" },
+      { icon: <FiExternalLink />, url: "https://ps5ecom.vercel.app/" }
     ]
   },
   {
-    title: "App de Recettes",
-    description: "Recherche avec filtres et favoris",
-    tech: ["React", "Firebase", "API"],
-    image: "/img1.jpg",
+    title: "Landing page",
+    description: "Conception d'une landing page suivant une maquette Figma",
+    tech: ["Next.js", "Tailwind CSS"],
+    image: "/landing.png",
+    preview: "https://landingpage-iota-lovat.vercel.app/",
     links: [
-      { icon: <FiGithub />, url: "#" },
-      { icon: <FiExternalLink />, url: "#" }
+      { icon: <FiGithub />, url: "https://github.com/votreprofil/recettes" },
+      { icon: <FiExternalLink />, url: "https://landingpage-iota-lovat.vercel.app/" }
     ]
   },
   {
@@ -30,9 +45,10 @@ const projects = [
     description: "Galerie immersive Three.js",
     tech: ["Three.js", "GSAP"],
     image: "/img1.jpg",
+    preview: "https://landingpage-iota-lovat.vercel.app/",
     links: [
-      { icon: <FiGithub />, url: "#" },
-      { icon: <FiExternalLink />, url: "#" }
+      { icon: <FiGithub />, url: "https://github.com/votreprofil/portfolio-3d" },
+      { icon: <FiExternalLink />, url: "https://landingpage-iota-lovat.vercel.app/" }
     ]
   }
 ];
@@ -40,8 +56,17 @@ const projects = [
 export default function ProjectsCarousel() {
   const [current, setCurrent] = useState(0);
 
-  const next = () => setCurrent((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
-  const prev = () => setCurrent((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+  const next = useCallback(() => {
+    setCurrent((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+  }, []);
+
+  const prev = useCallback(() => {
+    setCurrent((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+  }, []);
+
+  const goToProject = useCallback((index: number) => {
+    setCurrent(index);
+  }, []);
 
   return (
     <section id="projets" className="py-20 bg-neutral-50 dark:bg-neutral-900">
@@ -50,6 +75,7 @@ export default function ProjectsCarousel() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
           className="mb-16 text-center"
         >
           <h2 className="text-4xl font-bold mb-2">
@@ -66,6 +92,7 @@ export default function ProjectsCarousel() {
           <button 
             onClick={prev}
             className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white dark:bg-neutral-800 shadow-lg hover:bg-blue-50 dark:hover:bg-neutral-700 transition-all"
+            aria-label="Projet précédent"
           >
             <FiChevronLeft className="h-6 w-6" />
           </button>
@@ -75,16 +102,21 @@ export default function ProjectsCarousel() {
             key={current}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.5 }}
             className="bg-white dark:bg-neutral-800 rounded-xl overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-700"
           >
             <div className="h-64 relative overflow-hidden">
-              <Image
-                src={projects[current].image}
-                alt={projects[current].title}
-                fill
-                className="object-cover"
-              />
+              <LinkPreview url={projects[current].preview}>
+                <Image
+                  src={projects[current].image}
+                  alt={projects[current].title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={current === 0}
+                />
+              </LinkPreview>
             </div>
             
             <div className="p-6">
@@ -110,10 +142,11 @@ export default function ProjectsCarousel() {
                     key={i}
                     href={link.url}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-lg transition-colors"
                   >
                     {link.icon}
-                    {i === 0 ? "Code" : "Live"}
+                    <span>{i === 0 ? "Code" : "Live"}</span>
                   </a>
                 ))}
               </div>
@@ -123,6 +156,7 @@ export default function ProjectsCarousel() {
           <button 
             onClick={next}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white dark:bg-neutral-800 shadow-lg hover:bg-blue-50 dark:hover:bg-neutral-700 transition-all"
+            aria-label="Projet suivant"
           >
             <FiChevronRight className="h-6 w-6" />
           </button>
@@ -132,22 +166,28 @@ export default function ProjectsCarousel() {
             {projects.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setCurrent(i)}
+                onClick={() => goToProject(i)}
                 className={`h-2 w-2 rounded-full transition-all ${i === current ? 'bg-blue-500 w-6' : 'bg-neutral-300 dark:bg-neutral-600'}`}
+                aria-label={`Aller au projet ${i + 1}`}
               />
             ))}
           </div>
         </div>
 
         {/* Bouton Voir plus */}
-        <div className="text-center mt-16">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-center mt-16"
+        >
           <a
             href="/projets"
             className="inline-block px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors shadow-lg"
           >
             Voir tous mes projets →
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

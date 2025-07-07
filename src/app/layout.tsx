@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Arel Tohoubi",
-  description: "Developpeur web | Portofolio",
+  title: "Arel Tohoubi | Portfolio",
+  description: "Developpeur web | Portfolio",
 };
 
 export default function RootLayout({
