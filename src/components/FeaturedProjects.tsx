@@ -76,6 +76,7 @@ export default function ProjectsCarousel() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
           className="mb-16 text-center"
         >
           <h2 className="text-4xl font-bold mb-2">
@@ -104,6 +105,7 @@ export default function ProjectsCarousel() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
             className="bg-white dark:bg-neutral-800 rounded-xl overflow-hidden shadow-lg border border-neutral-200 dark:border-neutral-700"
           >
             <div className="h-64 relative overflow-hidden">
@@ -179,6 +181,7 @@ export default function ProjectsCarousel() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
+          viewport={{ once: true }}
           className="text-center mt-16"
         >
           <a

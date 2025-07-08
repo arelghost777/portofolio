@@ -24,6 +24,7 @@ export default function PersonalAbout() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
           className="relative w-full max-w-md lg:w-1/3"
         >
           <div className="absolute -inset-4 rounded-2xl bg-blue-500/10 blur-xl"></div>
@@ -32,9 +33,9 @@ export default function PersonalAbout() {
               src="/avatar.jpg" // Remplace par ton image
               width={500}
               height={500}
-              alt="Photo de [Ton Prénom]"
+              alt="Photo d'Arel"
               className="w-full h-auto object-cover"
-              priority
+              priority={true}
             />
           </div>
           <motion.div
@@ -46,6 +47,7 @@ export default function PersonalAbout() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
+            viewport={{ once: true }}
             className="absolute -bottom-6 -right-6"
           >
             <HoverBorderGradient
@@ -68,6 +70,7 @@ export default function PersonalAbout() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
+            viewport={{ once: true }}
             className="relative pl-8 border-l-2 border-blue-500/30"
           >
             <div className="absolute text-7xl font-serif top-0 left-0 text-blue-500/20 -mt-4">&quot;</div>

@@ -19,6 +19,7 @@ export default function SiteFooter() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             <h3 className="text-2xl font-bold text-white mb-4">
@@ -35,6 +36,7 @@ export default function SiteFooter() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
             className="space-y-4"
           >
             <h4 className="text-lg font-semibold text-white">Liens rapides</h4>
@@ -50,11 +52,6 @@ export default function SiteFooter() {
                 </a>
               </li>
               <li>
-                <a href="/sitemap" className="hover:text-white transition-colors">
-                  Plan du site
-                </a>
-              </li>
-              <li>
                 <a href="#contact" className="hover:text-white transition-colors">
                   Contact
                 </a>
@@ -67,6 +64,7 @@ export default function SiteFooter() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
             className="space-y-4"
           >
             <h4 className="text-lg font-semibold text-white">Connectons-nous</h4>
@@ -74,7 +72,7 @@ export default function SiteFooter() {
             {/* Réseaux sociaux */}
             <div className="flex gap-4 mb-4">
               <a 
-                href="https://github.com/tonprofil" 
+                href="https://github.com/arelghost777" 
                 target="_blank"
                 className="p-2 bg-neutral-800 hover:bg-neutral-700 rounded-full text-white transition-colors"
                 aria-label="GitHub"
@@ -82,7 +80,7 @@ export default function SiteFooter() {
                 <FiGithub className="h-5 w-5" />
               </a>
               <a 
-                href="https://linkedin.com/in/tonprofil" 
+                href="https://linkedin.com/in/areltohoubi" 
                 target="_blank"
                 className="p-2 bg-neutral-800 hover:bg-neutral-700 rounded-full text-white transition-colors"
                 aria-label="LinkedIn"
@@ -90,7 +88,7 @@ export default function SiteFooter() {
                 <FiLinkedin className="h-5 w-5" />
               </a>
               <a 
-                href="https://twitter.com/tonprofil" 
+                href="https://twitter.com/#" 
                 target="_blank"
                 className="p-2 bg-neutral-800 hover:bg-neutral-700 rounded-full text-white transition-colors"
                 aria-label="Twitter"
@@ -127,6 +125,7 @@ export default function SiteFooter() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
+          viewport={{ once: true }}
           className="border-t border-neutral-800 mt-12 pt-6 text-sm text-center"
         >
           <p>Conçu avec Next.js — Dernière mise à jour : {currentYear}</p>

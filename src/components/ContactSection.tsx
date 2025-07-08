@@ -1,15 +1,19 @@
-"use client";
+"use client"
 import { motion } from "framer-motion";
 import { FiMail, FiLinkedin, FiGithub, FiSend } from "react-icons/fi";
 import { SubmitHandler, useForm } from "react-hook-form";
+import emailjs from '@emailjs/browser';
+import { useEffect, useState } from "react";
 
-type FormData = {
+type FormData = { 
   name: string;
   email: string;
   message: string;
 };
 
 export default function ContactSection() {
+  const [isSending, setIsSending] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -19,17 +23,30 @@ export default function ContactSection() {
     mode: "onBlur"
   });
 
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
-    try {
-      console.log(data);
-      // Ici vous pourriez ajouter un appel API réel
-      alert(`Merci pour votre message, ${data.name} !`);
-      reset();
-    } catch (error) {
-      console.error("Erreur lors de l'envoi:", error);
-      alert("Une erreur est survenue. Veuillez réessayer.");
-    }
-  };
+const onSubmit: SubmitHandler<FormData> = async (data) => {
+  setIsSending(true);
+  try {
+    const result = await emailjs.send(
+     process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+     process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+
+      {
+        name: data.name,
+        email: data.email,
+        message: data.message
+      },
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!      // ✔️ Ton Public API Key (attention à ne pas l’exposer dans un repo public)
+    );
+
+    alert(`Message envoyé avec succès, ${data.name} !`);
+    reset();
+  } catch (error) {
+    console.error('Erreur:', error);
+    alert(error instanceof Error ? error.message : 'Une erreur est survenue');
+  } finally {
+    setIsSending(false);
+  }
+};
 
   return (
     <section id="contact" className="py-20 bg-neutral-50 dark:bg-neutral-900">
@@ -134,9 +151,9 @@ export default function ContactSection() {
               <button
                 type="submit"
                 className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors shadow-lg disabled:opacity-50"
-                disabled={Object.keys(errors).length > 0}
+                disabled={Object.keys(errors).length > 0 || isSending}
               >
-                Envoyer le message <FiSend className="h-4 w-4" />
+                {isSending ? "Envoi..." : "Envoyer le message"} <FiSend className="h-4 w-4" />
               </button>
             </div>
           </motion.form>

@@ -103,6 +103,7 @@ export default function FrontendSkills() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
+          viewport={{ once: true }}
           className="mt-16 bg-white/5 rounded-xl p-6 border border-white/10"
         >
           <h4 className="text-center font-medium mb-4">Mon stack frontend en 2025</h4>
@@ -123,6 +124,7 @@ export default function FrontendSkills() {
                     initial={{ width: 0 }}
                     whileInView={{ width: tech.level }}
                     transition={{ duration: 1, delay: 0.2 }}
+                    viewport={{ once: true }}
                     className={`h-full bg-gradient-to-r from-blue-500 to-blue-700`}
                   />
                 </div>
