@@ -80,7 +80,7 @@ export default function SiteFooter() {
                 <FiGithub className="h-5 w-5" />
               </a>
               <a 
-                href="https://linkedin.com/in/areltohoubi" 
+                href="https://www.linkedin.com/in/arel-tohoubi-934a122b6" 
                 target="_blank"
                 className="p-2 bg-neutral-800 hover:bg-neutral-700 rounded-full text-white transition-colors"
                 aria-label="LinkedIn"
