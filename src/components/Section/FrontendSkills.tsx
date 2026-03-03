@@ -86,8 +86,6 @@ export default function FrontendSkills() {
             Technologies que j&apos;utilise quotidiennement pour créer des expériences web exceptionnelles
           </p>
         </div>
-
-        {/* Grille de compétences */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {skills.map((skill, index) => (
             <motion.div
@@ -96,7 +94,6 @@ export default function FrontendSkills() {
             >
               <BackgroundGradient className="h-full rounded-xl md:rounded-2xl p-4 md:p-6 bg-neutral-800">
                 <div className="flex flex-col items-center text-center h-full">
-                  {/* Icone avec effet de gradient */}
                   <div className={`mb-4 md:mb-6 p-3 md:p-4 rounded-full bg-gradient-to-br ${skill.color}`}>
                     {skill.icon}
                   </div>

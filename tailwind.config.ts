@@ -21,6 +21,12 @@ module.exports = {
           },
         },
       },
+      colors: {
+        primary: "#BF4646",
+        secondary: "#7EACB5",
+        background: "#FFF4EA",
+        surface: "#EDDCC6",
+      },
     },
   },
   plugins: [],
