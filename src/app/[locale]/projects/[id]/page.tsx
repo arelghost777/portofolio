@@ -20,11 +20,12 @@ export default async function ProjectPage({ params }: { params: Params }) {
   const t = await getI18n();
 
   const project = {
-    ...rawProject,
-    title: t(`projects.items.${rawProject!.id}.title` as any),
-    description: t(`projects.items.${rawProject!.id}.description` as any),
-    overview: t(`projects.items.${rawProject!.id}.overview` as any),
-  };
+  ...rawProject,
+  title: t(`projects.items.${rawProject!.id}.title` as any, {} as any),
+  description: t(`projects.items.${rawProject!.id}.description` as any, {} as any),
+  overview: t(`projects.items.${rawProject!.id}.overview` as any, {} as any),
+};
+
 
   // Extraire la première phrase pour la citation
   const firstSentence = project.overview.split('.')[0] + '.';
