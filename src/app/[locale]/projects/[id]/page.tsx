@@ -3,7 +3,7 @@ import Link from "next/dist/client/link";
 import Image from "next/image";
 import { FiArrowUpRight, FiGithub, FiArrowLeft } from "react-icons/fi";
 import { notFound } from "next/navigation";
-import { getI18n } from "../../../../../locales/server";
+import { getScopedI18n } from "../../../../../locales/server";
 
 type Params = Promise<{ id: string; locale: string }>;
 
@@ -18,14 +18,14 @@ export default async function ProjectPage({ params }: { params: Params }) {
   }
 
   // Initialiser la fonction de traduction pour la locale courante
-  const t = await getI18n();
+  const t = await getScopedI18n("projects");
 
   // Traduire les champs du projet
   const project = {
     ...rawProject,
-    title: t(`projects.items.${rawProject.id}.title` as any),
-    description: t(`projects.items.${rawProject.id}.description` as any),
-    overview: t(`projects.items.${rawProject.id}.overview` as any),
+    title: t(`items.${rawProject.id}.title` as any),
+    description: t(`items.${rawProject.id}.description` as any),
+    overview: t(`items.${rawProject.id}.overview` as any),
   };
 
   // Extraire la première phrase pour la citation
