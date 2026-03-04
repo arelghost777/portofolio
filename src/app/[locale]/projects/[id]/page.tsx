@@ -18,7 +18,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
   }
 
   // Initialiser la fonction de traduction pour la locale courante
-  const t = await getI18n({ locale });
+  const t = await getI18n();
 
   // Traduire les champs du projet
   const project = {
