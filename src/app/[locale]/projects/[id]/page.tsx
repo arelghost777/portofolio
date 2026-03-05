@@ -18,14 +18,14 @@ export default async function ProjectPage({ params }: { params: Params }) {
   }
 
   // Initialiser la fonction de traduction pour la locale courante
-  const t = await getI18n({ locale });
+  const t = await getI18n() ;
 
   // Traduire les champs du projet
   const project = {
     ...rawProject,
-    title: t(`projects.items.${rawProject.id}.title` as any),
-    description: t(`projects.items.${rawProject.id}.description` as any),
-    overview: t(`projects.items.${rawProject.id}.overview` as any),
+    title: t(`projects.items.${rawProject.id}.title` as any, {} as any),
+    description: t(`projects.items.${rawProject.id}.description` as any, {} as any),
+    overview: t(`projects.items.${rawProject.id}.overview` as any, {} as any),
   };
 
   // Extraire la première phrase pour la citation

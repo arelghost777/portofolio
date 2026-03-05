@@ -18,9 +18,9 @@ export default function Navbar() {
     const toggleMenu = () => setIsActive(!isActive);
 
     const navLinks = [
-        { name: t('about'), href: "#about" },
-        { name: t('projects'), href: "#projets" }, // Corrigé pour matcher l'ID de ta section
-        { name: t('contact'), href: "#contact" },
+        { name: t('about'), href: "/#about" },
+        { name: t('projects'), href: "/#projets" }, // Corrigé pour matcher l'ID de ta section
+        { name: t('contact'), href: "/#contact" },
     ];
 
     return (
