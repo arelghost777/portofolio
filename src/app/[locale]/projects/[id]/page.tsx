@@ -8,24 +8,22 @@ import { getI18n } from "../../../../../locales/server";
 type Params = Promise<{ id: string; locale: string }>;
 
 export default async function ProjectPage({ params }: { params: Params }) {
-  const { id, locale } = await params;
+  const { id } = await params; // 'locale' retiré, inutile ici
   const projectId = Number(id);
   
-  // Récupérer le projet brut
   const rawProject = rawProjects.find(p => p.id === projectId);
   if (!rawProject) {
-    notFound(); // ou redirection
+    notFound();
   }
 
   // Initialiser la fonction de traduction pour la locale courante
-  const t = await getI18n() ;
+  const t = await getI18n({ locale });
 
-  // Traduire les champs du projet
   const project = {
     ...rawProject,
-    title: t(`projects.items.${rawProject.id}.title` as any, {} as any),
-    description: t(`projects.items.${rawProject.id}.description` as any, {} as any),
-    overview: t(`projects.items.${rawProject.id}.overview` as any, {} as any),
+    title: t(`projects.items.${rawProject.id}.title` as any),
+    description: t(`projects.items.${rawProject.id}.description` as any),
+    overview: t(`projects.items.${rawProject.id}.overview` as any),
   };
 
   // Extraire la première phrase pour la citation
